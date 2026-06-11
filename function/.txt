@@ -1,0 +1,50 @@
+1. Declaração de Função (Function Declaration)
+É a forma mais clássica. Ela se beneficia do hoisting, o que significa que o JavaScript "puxa" a função para o topo do arquivo antes de executar o código. Por isso, você pode chamá-la antes mesmo de onde ela foi declarada.
+
+// Chamando antes de declarar (Funciona devido ao hoisting)
+saudar("Samyr"); 
+
+function saudar(nome) {
+    return `Olá, ${nome}!`;
+}
+
+
+--------------------------------------------------------------------
+
+2. Expressão de Função (Function Expression)
+Aqui, você atribui uma função anônima (sem nome) a uma variável. Diferente da declaração, as expressões não sofrem hoisting da mesma forma, então você só pode chamá-las depois da linha de definição.
+
+const somar = function(a, b) {
+    return a + b;
+};
+
+console.log(somar(5, 3)); // 8
+
+
+--------------------------------------------------------------------
+
+3. Arrow Function (Função Seta)
+Introduzida no ES6, é uma sintaxe mais curta e moderna. Elas não possuem seu próprio this (elas herdam o this do escopo onde foram criadas), o que as torna ideais para callbacks, mas não para métodos de objetos que precisam acessar propriedades internas.
+
+// Sintaxe padrão
+const multiplicar = (a, b) => {
+    return a * b;
+};
+
+// Sintaxe curta (retorno implícito para apenas uma linha de código)
+const dobro = n => n * 2; 
+
+console.log(dobro(10)); // 20
+
+6. Métodos dentro de Objetos (Sintaxe ES6)
+Ao criar objetos, você pode definir funções diretamente dentro deles. Com o ES6, a sintaxe ficou ainda mais limpa, dispensando a palavra-chave function.
+
+const desenvolvedor = {
+    nome: "Samyr",
+    // Sintaxe ES6 curta para métodos
+    codar() {
+        return `${this.nome} está codando...`;
+    }
+};
+
+console.log(desenvolvedor.codar());
