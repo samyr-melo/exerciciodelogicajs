@@ -1,0 +1,11 @@
+Nível 2: Estados e Comunicação Bidirecional
+Um gerador pode receber valores de fora durante sua execução. Quando passamos um valor para o .next(valor), esse valor é recebido pelo yield correspondente
+
+function* conversador() {
+  const nome = yield "Qual seu nome?";
+  yield `Olá, ${nome}!`;
+}
+
+const conv = conversador();
+console.log(conv.next().value);      // "Qual seu nome?"
+console.log(conv.next("Samyr").value); // "Olá, Samyr!"

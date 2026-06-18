@@ -1,0 +1,58 @@
+A declaração function* (palavra chave function seguida de um asterisco) define uma função geradora (generator function), que retorna um objeto Generator.
+
+O que define uma Função Geradora?
+Diferente de funções comuns, as geradoras:
+
+ - São declaradas com um asterisco (*).
+
+ - Utilizam a palavra-chave yield para pausar a execução e retornar um valor.
+
+ - Retornam um Iterator Object (objeto iterador) quando chamadas.
+
+
+--------------------------
+
+
+function* generator(i) {
+  yield i;
+  yield i + 10;
+}
+
+const gen = generator(10);
+
+console.log(gen.next().value);
+// Expected output: 10
+
+console.log(gen.next().value);
+// Expected output: 20
+
+
+As funções geradoras (Generator Functions) em JavaScript são uma ferramenta poderosa que permite pausar e retomar a execução de uma função. Elas são fundamentais para lidar com fluxos de dados assíncronos, sequências infinitas e controle de fluxo complexo, mantendo o estado da função entre as chamadas.
+
+Diferente de uma função comum, que executa do início ao fim e retorna um valor, a função geradora retorna um Generator Object (um iterador) e usa a palavra-chave yield para entregar valores sob demanda.
+
+Nível 1: Introdução ao Conceito e Sintaxe (function*)
+Uma função geradora é definida com um asterisco (*). Ao chamá-la, ela não executa o código imediatamente, mas retorna um objeto iterador. O método .next() é o que "empurra" a execução até o próximo yield.
+
+Exemplo:
+
+JavaScript
+function* contadorSimples() {
+  yield 1;
+  yield 2;
+  yield 3;
+}
+
+const iterador = contadorSimples();
+console.log(iterador.next().value); // 1
+console.log(iterador.next().value); // 2
+console.log(iterador.next().done);  // false (ainda não terminou)
+console.log(iterador.next().value); // 3
+console.log(iterador.next().done);  // true (acabou)
+
+
+Exercício Resolvido: Crie uma função que gere as vogais "A", "E", "I", "O", "U" uma a uma.
+
+Solução: function* vogais() { yield 'A'; yield 'E'; yield 'I'; yield 'O'; yield 'U'; }
+
+Exercício para Resolver: Crie uma função geradora que retorne os dias da semana (Segunda a Sexta).
